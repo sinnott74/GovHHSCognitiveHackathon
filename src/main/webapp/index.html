@@ -6,9 +6,13 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-  <div class="words"></div>
+	<button type="button" id="record">🎤 Start Recording</button>
+  	<div class="words"></div>
 
 <script>
+
+   const playText = "🎤 Start Recording";
+   const stopText = "◼ Stop Recording";
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition();
   recognition.interimResults = true;
@@ -23,13 +27,51 @@
 
       p.textContent = transcript;
 
-      if (e.results[0].isFinal) {
-        p = document.createElement('p');
+      if (e.results[0].isFinal) {  	  
+    	sendSentenceToServer(transcript);
+        
+    	p = document.createElement('p');
         words.appendChild(p);
       }
   });
-  recognition.addEventListener('end', recognition.start);
-  recognition.start();
+  
+  // Restart when it stops
+  recognition.addEventListener('end', restart);
+  
+  const recordButton = document.querySelector('#record');
+  recordButton.addEventListener('click', toggleRecording)
+  
+  function restart(){
+	  let isRecording = recordButton.dataset.recording;
+	  if(isRecording) {
+		  recognition.start();
+	  }
+  }
+  
+  recognition.addEventListener('error', e => console.log(e));
+  
+  let sendSentenceToServer = function(text) {
+	  fetch("/GovHHSCognitiveHackathon/api/nlu", {method: "POST", body: text});
+  }
+ 
+ 
+  
+  function toggleRecording(){
+	  let isRecording = recordButton.dataset.recording;
+	  if(isRecording) {
+		  console.log('stopping');
+		  recognition.stop();
+		  recordButton.removeAttribute('data-recording');
+		  recordButton.textContent = playText;
+	  } else {
+		  console.log('starting');
+		  recognition.start();
+		  recordButton.setAttribute('data-recording', 'true');
+		  recordButton.textContent = stopText;
+	  }
+	  
+  }
+  
   
   /* fetch("/GovHHSCognitiveHackathon/api/nlu")
   .then(response => response.text())

@@ -6,10 +6,14 @@ body {
   font-family: 'helvetica neue';
   font-weight: 200;
   font-size: 20px;
+  display: flex;
+  flex-direction: column;
 }
 .words {
-  max-width:500px;
-  margin:50px auto;
+  flex: 1;
+  justify-content: center;
+  width:50%;
+  margin:auto;
   background:white;
   border-radius:5px;
   box-shadow:10px 10px 0 rgba(0,0,0,0.1);
@@ -31,4 +35,22 @@ p {
   bottom: 0;
   border: 1px solid;
   border-color: transparent #efe4e4;
+}
+
+#record {
+	margin:50px auto;
+	position: relative;
+	font-size: 2em;
+	background-color: grey;
+	border-radius: 5rem;
+	transition: .2s;
+	outline: none;
+	height: 2em;
+	width: 25%;
+	min-width: 10em;
+	border: 0.1em solid black;
+}
+
+#record[data-recording="true"] {
+	background-color: red;
 }

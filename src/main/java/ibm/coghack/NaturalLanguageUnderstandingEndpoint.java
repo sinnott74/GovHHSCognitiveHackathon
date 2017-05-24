@@ -1,7 +1,11 @@
 package ibm.coghack;
 
+import javax.annotation.PostConstruct;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
 
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.NaturalLanguageUnderstanding;
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalysisResults;
@@ -60,6 +64,14 @@ public class NaturalLanguageUnderstandingEndpoint {
 //    return results.toString();
     
     return "hello";
+  }
+  
+  
+  @POST
+  public Response getSentence(String sentence){
+	  System.out.println(sentence);
+	  return Response.status(200)
+				.build();
   }
 
 }
