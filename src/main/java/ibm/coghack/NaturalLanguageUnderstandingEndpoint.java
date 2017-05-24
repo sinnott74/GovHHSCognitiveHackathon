@@ -10,12 +10,16 @@ import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.Co
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.EntitiesOptions;
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.Features;
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.KeywordsOptions;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.MetadataOptions;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.SemanticRolesOptions;
 
 @Path("/nlu")
 public class NaturalLanguageUnderstandingEndpoint {
   
   @GET
   public String sayHello() {
+	  
+	  // API Documentation found at https://www.ibm.com/watson/developercloud/natural-language-understanding/api/v1/?java
     
 
 //    final NaturalLanguageUnderstanding understanding =
@@ -41,6 +45,7 @@ public class NaturalLanguageUnderstandingEndpoint {
 //    EntitiesOptions entities = new EntitiesOptions.Builder().build();
 //    
 //    KeywordsOptions keywords = new KeywordsOptions.Builder().build();
+//    
 //    
 //    final Features features =
 //          new Features.Builder().concepts(concepts).entities(entities).keywords(keywords).build();
