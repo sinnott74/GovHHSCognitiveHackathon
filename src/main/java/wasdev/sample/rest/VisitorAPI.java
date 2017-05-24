@@ -32,9 +32,8 @@ import wasdev.sample.Visitor;
 import wasdev.sample.store.VisitorStore;
 import wasdev.sample.store.VisitorStoreFactory;
 
-@ApplicationPath("api")
 @Path("/visitors")
-public class VisitorAPI extends Application {
+public class VisitorAPI{
 	
 	//Our database store
 	VisitorStore store = VisitorStoreFactory.getInstance();
