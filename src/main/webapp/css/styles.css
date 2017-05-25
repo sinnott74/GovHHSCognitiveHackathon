@@ -20,7 +20,7 @@ body {
 .questionnaire {
 	display: flex;
   	flex-direction: column;
-  	flex: 1;
+  	flex: .75;
   	margin-top: 5em;
   	padding: 1em;
   	border-radius:5px;
@@ -28,16 +28,23 @@ body {
   	box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
   	background-color: white;
   	display: none;
+  	transition: all 500ms ease-in-out;
 }
 
 .questionnaire.show {
 	display: block;	
 }
 
-.a {
-	border-bottom: 1px solid black;
-	
+P.q {
+	margin: 0;
 }
+
+.a {
+	padding-bottom: .2em;
+	border-bottom: 1px solid black;
+	line-height: 2em;
+}
+
 
 .words {
   flex: 1;

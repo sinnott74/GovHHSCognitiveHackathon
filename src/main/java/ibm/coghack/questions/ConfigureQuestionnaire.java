@@ -20,6 +20,7 @@ public class ConfigureQuestionnaire {
 		q2.setDatastoreAttribute("dob");
 		q2.associateKeyWord("date of birth");
 		q2.associateKeyWord("birth");
+		q2.associateKeyWord("birthday");
 		q2.associateKeyWord("of birth");
 		
 		// What is your gender?
@@ -36,12 +37,6 @@ public class ConfigureQuestionnaire {
 		q3.addKeyWordAnswerPairing("man", "male");
 		q3.addKeyWordAnswerPairing("woman", "female");
 		
-		// What is your salary?
-		ValueQuestion q4 = new ValueQuestion();
-		q4.setQuestionText("What is your salary?");
-		q4.setDatastoreAttribute("salary");
-		q4.associateKeyWord("salary");
-		q4.associateKeyWord("earn");
 		
 		// Do you have any medical conditions?
 		ValueQuestion q5 = new ValueQuestion();
@@ -61,7 +56,6 @@ public class ConfigureQuestionnaire {
 		questionnaire.addQuestion(q1);
 		questionnaire.addQuestion(q2);
 		questionnaire.addQuestion(q3);
-		questionnaire.addQuestion(q4);
 		questionnaire.addQuestion(q5);
 		questionnaire.addQuestion(q6);
 		
