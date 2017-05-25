@@ -6,13 +6,17 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-	<button type="button" id="record">🎤 Start Recording</button>
-  	<div class="words"></div>
+	<div class="recordingContainer">
+		<button type="button" id="record">🎤 Start Recording</button>
+	  	<div class="words"></div>
+  	</div>
+  	<div class="questionnaire">
+  	</div>
 
 <script>
 
-   const playText = "🎤 Start Recording";
-   const stopText = "◼ Stop Recording";
+  const playText = "🎤 Start Recording";
+  const stopText = "◼ Stop Recording";
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition();
   recognition.interimResults = true;
@@ -39,7 +43,8 @@
   recognition.addEventListener('end', restart);
   
   const recordButton = document.querySelector('#record');
-  recordButton.addEventListener('click', toggleRecording)
+  
+  recordButton.addEventListener('click', handleRecordingClick)
   
   function restart(){
 	  let isRecording = recordButton.dataset.recording;
@@ -53,31 +58,49 @@
   let sendSentenceToServer = function(text) {
 	  fetch("/GovHHSCognitiveHackathon/api/nlu", {method: "POST", body: text});
   }
- 
- 
   
-  function toggleRecording(){
+  function handleRecordingClick(){
 	  let isRecording = recordButton.dataset.recording;
 	  if(isRecording) {
 		  console.log('stopping');
 		  recognition.stop();
 		  recordButton.removeAttribute('data-recording');
 		  recordButton.textContent = playText;
+		  
+		  fetch("/GovHHSCognitiveHackathon/api/nlu")
+		  	.then((response) => response.json())
+		  	.then((json) => {
+		  		createQuestionnaire(json);
+		  });
+		  
 	  } else {
 		  console.log('starting');
 		  recognition.start();
 		  recordButton.setAttribute('data-recording', 'true');
 		  recordButton.textContent = stopText;
 	  }
-	  
   }
   
-  
-  /* fetch("/GovHHSCognitiveHackathon/api/nlu")
-  .then(response => response.text())
-  .then(data => console.log(data))
-  .catch(e => console.log(e)); */
-  
+  function createQuestionnaire(json){
+	  const questionnaire = document.querySelector('.questionnaire');
+	  
+	  json.questions.forEach((question) => {
+		  
+		 let q = document.createElement('p');
+		 q.innerText = 'Q: ' + question.questionText;
+		 q.classList.add('q');
+		 
+		 let a = document.createElement('p');
+		 a.innerText = 'A: ' + question.answer;
+		 a.classList.add('a');
+		 
+		 questionnaire.appendChild(q);
+		 questionnaire.appendChild(a);
+	  });
+	  
+	  questionnaire.classList.add('show');
+	  
+  }
 </script>
 </body>
 </html>
