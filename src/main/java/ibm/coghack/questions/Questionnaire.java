@@ -10,12 +10,10 @@ public class Questionnaire {
 	private List<Question> questions = new ArrayList<>();
 	
 	public void addQuestion(Question q) {
-		
 		questions.add(q);
 	}
 	
-	public void checkResultForAnswerToQuestions(AnalysisResults result){
-		
+	public void checkResultForAnswerToQuestions(AnalysisResults result){	
 		for(Question q : questions){
 			q.checkResultForAnswer(result);
 		}

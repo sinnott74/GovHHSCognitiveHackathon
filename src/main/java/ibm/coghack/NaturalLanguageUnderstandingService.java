@@ -21,6 +21,8 @@ public class NaturalLanguageUnderstandingService {
 	 */
 	public static AnalysisResults analyseSentence(String sentence){
 		
+		String USERNAME = "c8b02541-369f-4226-8ac9-d40704c5056c";
+		String PASSWORD = "qsphzTqlm7Mo";
 
 	    final NaturalLanguageUnderstanding understanding =
 	          new NaturalLanguageUnderstanding(

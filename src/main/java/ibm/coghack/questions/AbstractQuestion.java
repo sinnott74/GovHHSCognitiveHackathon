@@ -41,5 +41,4 @@ public abstract class AbstractQuestion implements Question {
 	public void setQuestionText(String questionText) {
 		this.questionText = questionText;
 	}
-
 }
