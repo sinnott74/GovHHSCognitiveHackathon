@@ -7,8 +7,38 @@ body {
   font-weight: 200;
   font-size: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  
 }
+
+.recordingContainer {
+	display: flex;
+  	flex-direction: column;
+  	flex: 1;
+}
+
+.questionnaire {
+	display: flex;
+  	flex-direction: column;
+  	flex: 1;
+  	margin-top: 5em;
+  	padding: 1em;
+  	border-radius:5px;
+  	-webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px;
+  	box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+  	background-color: white;
+  	display: none;
+}
+
+.questionnaire.show {
+	display: block;	
+}
+
+.a {
+	border-bottom: 1px solid black;
+	
+}
+
 .words {
   flex: 1;
   justify-content: center;
@@ -41,7 +71,7 @@ p {
 	margin:50px auto;
 	position: relative;
 	font-size: 2em;
-	background-color: grey;
+	background-color: #D3D3D3;
 	border-radius: 5rem;
 	transition: .2s;
 	outline: none;
@@ -49,8 +79,16 @@ p {
 	width: 25%;
 	min-width: 10em;
 	border: 0.1em solid black;
+	cursor: pointer;
+}
+
+#record:hover {
+	background-color: #bdbdbd;
 }
 
 #record[data-recording="true"] {
-	background-color: red;
+	background-color: #ff1919;
+}
+#record[data-recording="true"]:hover {
+	background-color: #ff4c4c;
 }
