@@ -8,7 +8,7 @@ public class SentenceClassifier {
 	/**
 	 * String prefixes used to determine if a sentence is a question.
 	 */
-	private static String[] questionPrefixes = {"tell me about", "what", "how", "do you", "can you", "ok", "have"};
+	private static String[] questionPrefixes = {"tell me about", "what", "how", "do you", "can you", "ok", "have", "who"};
 	
 	/**
 	 * Determines if a sentence is a question.
